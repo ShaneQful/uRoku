@@ -86,7 +86,11 @@ Application.prototype.init = function() {
 
         remoteButtons.filter(function(el) { return !el.empty; }).map(function (el) { return el.name; }).forEach(function (id) {
             UI.button(id).click(function () {
-                networkCall("POST", "http://" + ip + ":8060/keypress/" + id);
+                if (id !==  Keyboard) {
+                    networkCall("POST", "http://" + ip + ":8060/keypress/" + id);
+                } else {
+                    //TODO: Dialog stuff
+                }
             });
         });
 
@@ -103,11 +107,23 @@ Application.prototype.init = function() {
         networkCall("GET", "http://" + ip + ":8060/query/apps", function (response) {
             var jsonResponse = getJSONResponse(response);
             var html = jsonResponse.map(function (el) {
-                return '<li><a href="#">' + el.name + '</a></li>';
+                return '<li><aside><img width="50px;" src="http://' + ip + ':8060/query/icon/' + el.id +
+                        '"/></aside><a href="#" style="padding-left:25px;">' + el.name + '</a></li>';
             }).join("");
             document.querySelector(".uroku-apps ul").innerHTML = html;
             document.querySelector(".uroku-apps progress").style.display = 'none';
             document.querySelector("#uroku-app-list").style.display = 'block';
+
+            var list = document.querySelectorAll(".uroku-apps li");
+            for (var i = 0; i < list.length; i += 1) {
+                function attachEvent(el, idx) {
+                    el.addEventListener('click', function () {
+                        console.log("http://" + ip + ":8060/launch/" + jsonResponse[idx].id);
+                        networkCall("POST", "http://" + ip + ":8060/launch/" + jsonResponse[idx].id);
+                    });
+                }
+                attachEvent(list[i], i);
+            }
         }, function (response) {
             alert("Sorry there appears to have been an issue contacting your roku!");
         });

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=uRoku
+Exec=webapp-container --inspector ./www/index.html
+Icon=uRoku.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+

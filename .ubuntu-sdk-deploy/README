@@ -1,0 +1,52 @@
+HTML5 Application Template
+--------------------------
+
+
+www/          : the source files of the template application,
+tests/        : the application functional and unit tests
+package.json  : grunt package file used to install dependencies
+Gruntfile.js  : grunt file for the jasmine unit tests
+
+
+Unit Tests:
+-----------
+
+To run the unit tests, from the project folder:
+
+- Have nodejs and grunt installed on your system,
+
+sudo apt-get install nodejs
+
+- Install the node dependencies:
+
+npm install
+
+- Run the tests:
+
+npm test
+
+
+Autopilot (functional) tests
+----------------------------
+
+- Make sure that you have oxide-chromedriver and selenium installed:
+
+sudo apt-get install oxideqt-chromedriver
+sudo apt-add-repository ppa:canonical-platform-qa/selenium
+sudo apt-get update
+sudo apt-get install python3-selenium
+
+- Run the tests:
+
+cd tests/autopilot
+autopilot3 list application_tests
+autopilot3 run application_tests
+
+Notes:
+----------------------------
+
+- The .desktop file uses the executable 'webapp-container' as an HTML5 application launcher. Previously the executable 'ubuntu-html5-app-launcher' was used for this purpose, it has now been deprecated. For any application targetting the application framework 14.10 and apparmor policy 1.2 though, one can and should still use 'ubuntu-html5-app-launcher'. The Exec line in the .desktop file of the current application then becomes:
+
+Exec=ubuntu-html5-app-launcher $@ --www=www --inspector
+
+

@@ -1,0 +1,88 @@
+#hello-page{
+        padding: 1rem;
+}
+.title, .introduction, .button {
+	margin-bottom: 1rem;
+}
+
+.is-hidden {
+	display: none;
+}
+
+.img-cordova {
+	display: block;
+	margin: 0 auto;
+}
+
+.cordova-indicator {
+	text-align: center;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+/* uRoku CSS */
+
+.uroku-remote, .uroku-apps {
+    float:left;
+}
+
+.uroku-remote-button-areas {
+    float:left;
+    width: 33.3%;
+}
+
+.uroku-remote-button-areas button, .uroku-remote-button-areas-blank {
+    width: calc(100% - 20px);
+    margin:10px;
+    height: 15vh;
+}
+
+.uroku-apps {
+    height: 100vh;
+    overflow: auto;
+}
+
+.uroku-apps progress {
+    margin-left: calc(50% - 12px); /* Infinite loader has 24 px width */
+    margin-right: calc(50% - 12px);
+    margin-top: 49vh;
+}
+
+#uroku-app-list {
+    display:none;
+}
+
+@media(min-width:800px) {
+    .uroku-remote {
+        width: 33.3%;
+    }
+
+    .uroku-apps {
+        width: 66.6%;
+    }
+}
+
+@media(max-width:800px) {
+    .uroku-remote {
+        width: 100%;
+    }
+
+    .uroku-apps {
+        display: none;
+    }
+}

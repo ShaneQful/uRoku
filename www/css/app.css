@@ -67,7 +67,17 @@
     display:none;
 }
 
-@media(min-width:800px) {
+section.uroku-dialog {
+    min-width: 300px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.uroku-dialog button {
+    margin-top: 20px;
+}
+
+@media(min-width:870px) {
     .uroku-remote {
         width: 33.3%;
     }
@@ -77,12 +87,20 @@
     }
 }
 
-@media(max-width:800px) {
+@media(max-width:870px) {
     .uroku-remote {
         width: 100%;
     }
 
     .uroku-apps {
         display: none;
+    }
+
+    section.uroku-dialog {
+        padding: 20px;
+    }
+
+    .uroku-dialog input {
+        width: calc(100% - 20px);
     }
 }

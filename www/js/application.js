@@ -83,16 +83,30 @@ Application.prototype.init = function() {
         }).join('');
 
         var ip = '192.168.1.65';
+        var keyboardDialog = UI.dialog("uroku-keyboard-dialog");
 
         remoteButtons.filter(function(el) { return !el.empty; }).map(function (el) { return el.name; }).forEach(function (id) {
             UI.button(id).click(function () {
-                if (id !==  Keyboard) {
+                if (id !==  "Keyboard") {
                     networkCall("POST", "http://" + ip + ":8060/keypress/" + id);
                 } else {
-                    //TODO: Dialog stuff
+                    keyboardDialog.show();
                 }
             });
         });
+
+        var previousKeyboardInput = "";
+        document.querySelector(".uroku-dialog input").addEventListener('input', function () {
+            var keyboardInput = document.querySelector(".uroku-dialog input").value;
+            if (previousKeyboardInput.length > keyboardInput.length) {
+                networkCall("POST", "http://" + ip + ":8060/keypress/Backspace");
+            } else {
+                networkCall("POST", "http://" + ip + ":8060/keypress/Lit_" + encodeURIComponent(keyboardInput.charAt(keyboardInput.length - 1)));
+            }
+            previousKeyboardInput = keyboardInput;
+        });
+
+        UI.button('uroku-keyboard-cancel').click(function () { keyboardDialog.hide(); });
 
         function getJSONResponse(response) {
             return response.split("</app>").filter(function (el) {

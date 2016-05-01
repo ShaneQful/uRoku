@@ -116,6 +116,7 @@ Application.prototype.init = function() {
         function attachEventsToFindDialog(changeCallback) {
             UI.button('uroku-findroku-save').click(function () {
                 ip = document.querySelector("#uroku-findroku-dialog input").value;
+                localStorage.ip = ip;
                 findRokuDialog.hide();
                 changeCallback();
             });

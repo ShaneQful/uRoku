@@ -159,6 +159,7 @@ Application.prototype.init = function() {
                 }
             }, function (response) {
                 alert("Sorry there appears to have been an issue contacting your roku!");
+                findRokuDialog.show();
             });
         }
 

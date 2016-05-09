@@ -77,6 +77,10 @@ section.uroku-dialog {
     margin-top: 20px;
 }
 
+.uroku-dialog-text {
+    padding-bottom: 20px;
+}
+
 @media(min-width:870px) {
     .uroku-remote {
         width: 33.3%;
@@ -102,5 +106,9 @@ section.uroku-dialog {
 
     .uroku-dialog input {
         width: calc(100% - 20px);
+    }
+
+    .uroku-dialog-text {
+        color: #484647;
     }
 }

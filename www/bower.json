@@ -1,0 +1,23 @@
+{
+  "name": "uRoku",
+  "homepage": "https://github.com/ShaneQful/uRoku",
+  "authors": [
+    "ShaneQful <shane@softwareontheside.info>"
+  ],
+  "description": "Roku Remote for Ubuntu Touch",
+  "main": "index.html",
+  "keywords": [
+    "ubuntu",
+    "touch",
+    "roku"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

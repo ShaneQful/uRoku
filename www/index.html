@@ -38,53 +38,14 @@
             </ul>
         </header>
 
-        <div data-role="content">
+        <div data-role="content" id="maincontent">
 
-            <!-- The application main page -->
-            <div data-role="tab" id="uroku-tab">
-            <!-- Start of Block - Replace this block with your own code -->
-                <div class="info">
-                <div class="uroku-remote">
-                    <!-- populated by js -->
-                </div>
-
-                <div class="uroku-apps">
-                    <section data-role="list" id="uroku-app-list">
-                          <header>Apps:</header>
-                          <ul>
-
-                          </ul>
-                     </section>
-                     <progress class="infinite"></progress>
-                </div>
-            </div>
-
-            <div data-role="dialog" id="uroku-keyboard-dialog">
-                <section class="uroku-dialog">
-                    <input type="text" placeholder="Type want you want send to the roku here .."/>
-                    <div>
-                        <button data-role="button" id="uroku-keyboard-cancel">Close</button>
-                    </div>
-                </section>
-            </div>
-
-            <div data-role="dialog" id="uroku-findroku-dialog">
-                <section class="uroku-dialog">
-                    <div class="uroku-dialog-text" >No Roku Found:</div>
-                    <input type="text" placeholder="Enter the ip of your roku here .."/>
-                    <div>
-<!--                        <button data-role="button" id="uroku-findroku-discover">Discover</button>-->
-                        <button data-role="button" id="uroku-findroku-save">Save</button>
-                        <button data-role="button" id="uroku-findroku-cancel">Close</button>
-                    </div>
-                </section>
-            </div>
-
-            <!-- End of Block-->
 
         </div>
     </div>
 
+    <script src="bower_components/nunjucks/browser/nunjucks.js"></script>
+    <script src="js/NLS.js"></script>
     <script src="js/application.js"></script>
     <script src="js/ui.js"></script>
 </body>

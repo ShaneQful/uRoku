@@ -2,10 +2,23 @@ function Application(UIContext) {
     this._uiContextClass = UIContext;
     this._initialized = false;
 };
+
+function getLocalNLS() {
+    var language = window.navigator.userLanguage || window.navigator.language;
+    if(NLS[language]) {
+        return NLS[language];
+    } else {
+        return NLS.en;
+    }
+}
+
 Application.prototype.init = function() {
     if (this._uiContextClass && !this._initialized) {
         this._initialized = true;
+        var localNLS = getLocalNLS();
+        document.querySelector("#maincontent").innerHTML = nunjucks.render('js/views/main.html', localNLS);
         var UI = new this._uiContextClass();
+
         UI.init();
 
         var ip = localStorage.ip,
@@ -81,7 +94,7 @@ Application.prototype.init = function() {
                     html += '<div class="uroku-remote-button-areas-blank"></div>';
                 } else {
                     html += '<button class="button" data-role="button" id="' + el.name +'">'
-                    html += (el.icon ? '<img title="' + el.name + '" src="' + el.icon + '"/>' : el.name) + '</button>';
+                    html += (el.icon ? '<img title="' + localNLS[el.name] + '" src="' + el.icon + '"/>' : localNLS[el.name]) + '</button>';
                 }
                 html += '</div>';
                 return html;
@@ -159,7 +172,7 @@ Application.prototype.init = function() {
                     attachEvent(list[i], i);
                 }
             }, function (response) {
-                alert("Sorry there appears to have been an issue contacting your roku!");
+                alert(localNLS.IssueWithContacting);
                 findRokuDialog.show();
             });
         }

@@ -5,11 +5,9 @@ function Application(UIContext) {
 
 function getLocalNLS() {
     var language = window.navigator.userLanguage || window.navigator.language;
-    if(NLS[language]) {
-        return NLS[language];
-    } else {
-        return NLS.en;
-    }
+    if(NLS[language]) { return NLS[language]; }
+    if(language.indexOf('fr') !== -1) { return NLS['fr-FR']; }
+    return NLS.en;
 }
 
 Application.prototype.init = function() {

@@ -9,7 +9,7 @@
             "desktop": "uRoku.desktop"
         }
     },
-    "version": "0.5",
+    "version": "0.6",
     "maintainer": "Shane Quigley <shane@softwareontheside.info>",
     "framework": "ubuntu-sdk-15.04.4"
 }
